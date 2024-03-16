@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Nutricion</title>
+    <link rel="stylesheet" href="/css/estiloCrear.css">
+    <script>
+        function validarFormulario() {
+            var nombre = document.forms["formularioAgregarNutricion"]["nombre"].value;
+            var comida = document.forms["formularioAgregarNutricion"]["comida"].value;
+            var tipo = document.forms["formularioAgregarNutricion"]["tipo"].value;
+            if (nombre === "" || comida === "" || tipo === "") {
+                alert("Todos los campos son obligatorios");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2 class="logo"></h2>
+            <ul>
+                <a href="/ListaNutricion"><li>VOLVER</li></a>
+            </ul>
+        </nav>
+    </header>
+    <div class="listaNutriciones">
+        <div class="espacioNegro">
+        </div>
+        <div class="lista">
+            <h1>Crea tu propia nutricion</h1>
+            {{#exito}}
+                <p>Nutricion creada</p>
+            {{/exito}}
+            <form name="formularioAgregarNutricion" action="/ListaNutricion/CrearNutricion" method="post" onsubmit="return validarFormulario()">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre"><br><br>
+                <label for="comida">Comida:</label>
+                <input type="text" id="comida" name="comida"><br><br>
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" name="tipo"><br><br>
+                <input type="submit" value="Agregar">
+            </form>
+        </div>
+        <div class="espacioNegro">
+        </div>
+    </div>
+</body>
+</html>
